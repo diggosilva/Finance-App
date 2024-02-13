@@ -37,6 +37,9 @@ class AddValuesViewController: UIViewController {
         // Adicione a observação para cada campo de texto
         addValuesView.textFields.forEach({ $0.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged) })
         
+        addValuesView.textFields.forEach({ $0.delegate = self })
+        addValuesView.textFields.forEach({ $0.delegate = self })
+        
         viewModel.stateButton.bind { _ in
             // Atualize o estado do botão com base no estado do viewModel
             self.navigationItem.rightBarButtonItem?.isEnabled = self.viewModel.stateButton.value == .isOn
@@ -64,7 +67,8 @@ class AddValuesViewController: UIViewController {
     
     @objc func didTapSaveButton() {
         // ENVIAR OS DADOS PRA TABLEVIEW
-        viewModel.addFinance()
+        
+//        viewModel.addFinance(title: <#String?#>, description: <#String?#>, amount: <#String?#>, type: <#String?#>)
         navigationController?.popToRootViewController(animated: true)
     }
     
@@ -97,4 +101,15 @@ extension AddValuesViewController: AddValuesViewDelegate {
         alert.addActions([gasto, lucro, cancelar])
         present(alert, animated: true)
     }
+}
+
+extension AddValuesViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("Entrou na TextField")
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("Saiu da TextField")
+    }
+    
 }

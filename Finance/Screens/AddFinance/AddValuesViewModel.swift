@@ -20,8 +20,13 @@ class AddValuesViewModel {
         self.finance = finance
     }
     
-    func addFinance() {
-        FinanceSingleton.shared.listFinance.value.append(finance)
+    func addFinance(title: String?, description: String?, amount: String?, type: String?) {
+        finance.title = title ?? ""
+        finance.description = description ?? ""
+        finance.tag = type ?? ""
+        finance.amount = Double(amount ?? "") ?? 0
+        
+        FinanceSingleton.shared.save(finance)
     }
     
     func handleStates(title: String?, description: String?, amount: String?, type: String?) {
@@ -31,11 +36,6 @@ class AddValuesViewModel {
               let type = type, !type.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
               let amount = amount, !amount.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
             stateButton.value = .isOff
-            
-            finance.title = title ?? ""
-            finance.description = description ?? ""
-            finance.tag = type ?? ""
-            finance.amount = Double(String(describing: amount)) ?? 0
             return
         }
         

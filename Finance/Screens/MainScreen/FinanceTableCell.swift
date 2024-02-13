@@ -46,6 +46,11 @@ class FinanceTableCell: UITableViewCell {
         titleLabel.text = model.title
         descriptionLabel.text = model.description
         tagLabel.text = model.tag
+        if tagLabel.text == .gasto {
+            tagBG.backgroundColor = .systemRed
+        } else {
+            tagBG.backgroundColor = .systemGreen
+        }
         amountLabel.text = "R$ \(model.amount)".replacingOccurrences(of: ",", with: ".")
     }
     

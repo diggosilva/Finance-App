@@ -9,7 +9,11 @@ import Foundation
 
 class FinanceSingleton {
     static let shared: FinanceSingleton = FinanceSingleton()
-    var listFinance: Bindable<[Finance]> = Bindable(value: [])
+    private(set) var listFinance: Bindable<[Finance]> = Bindable(value: [])
     
     private init() {}
+    
+    func save(_ newValue: Finance) {
+        listFinance.value.append(newValue)
+    }
 }
