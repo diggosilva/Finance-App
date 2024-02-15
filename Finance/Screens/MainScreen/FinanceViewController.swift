@@ -73,7 +73,6 @@ extension FinanceViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FinanceTableCell.identifier, for: indexPath) as? FinanceTableCell else { return UITableViewCell() }
-//        let financeSelected = viewModel.getFinance(of: indexPath)
         cell.configure(model: viewModel.getFinance(of: indexPath))
         return cell
     }

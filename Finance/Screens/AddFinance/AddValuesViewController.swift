@@ -47,7 +47,7 @@ class AddValuesViewController: UIViewController {
     }
     
     func loadFinances() {
-        addValuesView.configure(model: viewModel.finance)
+//        addValuesView.configure(model: viewModel.finance ?? <#default value#>)
     }
     
     @objc func textFieldDidChange() {
@@ -68,7 +68,7 @@ class AddValuesViewController: UIViewController {
     @objc func didTapSaveButton() {
         // ENVIAR OS DADOS PRA TABLEVIEW
         
-//        viewModel.addFinance(title: <#String?#>, description: <#String?#>, amount: <#String?#>, type: <#String?#>)
+        viewModel.addFinance(title: nil, description: nil, amount: nil, type: nil)
         navigationController?.popToRootViewController(animated: true)
     }
     
@@ -105,11 +105,10 @@ extension AddValuesViewController: AddValuesViewDelegate {
 
 extension AddValuesViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        print("Entrou na TextField")
+//        print("Entrou na TextField")
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("Saiu da TextField")
+//        print("Saiu da TextField")
     }
-    
 }
